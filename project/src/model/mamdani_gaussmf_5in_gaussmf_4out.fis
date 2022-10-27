@@ -1,0 +1,48 @@
+[System]
+Name='mamdani_gaussmf_5in_gaussmf_4out'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=5
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='response'
+Range=[0 10]
+NumMFs=5
+MF1='bad':'gaussmf',[1.062 0]
+MF2='poor':'gaussmf',[1.062 2.5]
+MF3='fair':'gaussmf',[1.062 5]
+MF4='good':'gaussmf',[1.062 7.5]
+MF5='excellent':'gaussmf',[1.062 10]
+
+[Input2]
+Name='report'
+Range=[0 10]
+NumMFs=5
+MF1='bad':'gaussmf',[1.062 0]
+MF2='poor':'gaussmf',[1.062 2.5]
+MF3='fair':'gaussmf',[1.062 5]
+MF4='good':'gaussmf',[1.062 7.5]
+MF5='excellent':'gaussmf',[1.062 10]
+
+[Output1]
+Name='grade'
+Range=[2 5]
+NumMFs=4
+MF1='unsatisfactory':'gaussmf',[0.4247 2]
+MF2='satisfactory':'gaussmf',[0.4247 3]
+MF3='good':'gaussmf',[0.4247 4]
+MF4='excellent':'gaussmf',[0.4247 5]
+
+[Rules]
+2 2, 2 (1) : 2
+1 1, 1 (1) : 1
+3 4, 2 (1) : 1
+4 4, 3 (1) : 1
+5 5, 4 (1) : 1
